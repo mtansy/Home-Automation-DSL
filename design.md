@@ -19,7 +19,7 @@
         if device.type != "essential":
             device.turn_off()
 
-## Block: Turn Off Non-Essential Devices
+## Block: Schedule Device Activation
 - **Description:** This block allows users to schedule when specific devices should be turned on or off.
 - **Semantics:** Users can define schedules for devices to automatically activate or deactivate at specified times.
 - **Code Execution:**

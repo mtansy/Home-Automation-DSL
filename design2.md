@@ -56,5 +56,4 @@
     Users | Devices | ElectricityCost($/month)
     --- | --- | ---
     user1   | Amazon Alexa | 3
-    --- | --- | ---
     user2 | Outdoor Lights | 20

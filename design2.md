@@ -44,7 +44,7 @@
 ## Example Use Case for Recursive Program
 - **Description:** There are many different recursive programs that can be used in Blockly to create infinitely many complex programs from a small number of building blocks. One of the prime examples of this is calculating factorials, shown below:
 - **Code Execution:** 
-    '''python 
+    ```python
     Function factorial(n)
     If n = 0
         Return 1

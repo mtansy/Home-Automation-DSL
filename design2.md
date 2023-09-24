@@ -51,9 +51,12 @@
     Else
         Return n * factorial(n - 1)
 
-## Data 
-- **Data Our Project Needs to Maintain:** Some data that our project woul dneed to maintain could include user-defined thresholds, device information, and electricity cost data. A simple database example is shown below:
+## Data Our Project Needs to Maintain
+- Some data that our project woul dneed to maintain could include user-defined thresholds, device information, and electricity cost data. A simple database example is shown below:
     Users | Devices | ElectricityCost($/month)
     --- | --- | ---
     user1   | Amazon Alexa | 3
     user2 | Outdoor Lights | 20
+
+## Simulator
+- Since our project is designed to help with home automation, we need a simulator to help test see if our code actually works. The simulator that we are going to use is Home Assistant, which is a free and open-source software that is designed to be the central control system for all smart home devices.

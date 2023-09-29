@@ -123,6 +123,10 @@
       }
     `;
   };
+  
+  Blockly.JavaScript['turn_on_essential'] = function(block) {
+    return 'turn_on_essential();\n';
+  };
 
   Blockly.JavaScript['turn_off_non_essential'] = function(block) {
     return 'turn_off_non_essential_devices();\n';
@@ -135,13 +139,7 @@
       schedule_device_activation('someDevice', '${startTime}', '${endTime}');
     `;
   };
-
-  // Blockly.JavaScript['location_based_activation'] = function(block) {
-  //   const distance = Blockly.JavaScript.valueToCode(block, 'DISTANCE', Blockly.JavaScript.ORDER_ATOMIC);
-  //   return `
-  //     location_based_activation('someDevice', ${distance}, user_location);
-  //   `;
-  // };
+  
   Blockly.JavaScript['location_based_activation'] = function(block) {
   const operator = block.getFieldValue('OPERATOR');
   const threshold = block.getFieldValue('THRESHOLD');

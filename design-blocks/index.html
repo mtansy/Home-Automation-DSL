@@ -77,7 +77,9 @@
         .appendField(new Blockly.FieldDropdown([["less than", "LESS"], ["greater than", "GREATER"]]), "OPERATOR")
         .appendField(new Blockly.FieldNumber(0, 0, 1000), "THRESHOLD")
         .appendField("miles from home, then");
-      this.setInputsInline(false); // Allow multiple blocks inside
+      this.appendStatementInput("DO")
+            .setCheck(null)
+            .appendField("Do:");
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour(290);

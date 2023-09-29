@@ -136,12 +136,25 @@
     `;
   };
 
+  // Blockly.JavaScript['location_based_activation'] = function(block) {
+  //   const distance = Blockly.JavaScript.valueToCode(block, 'DISTANCE', Blockly.JavaScript.ORDER_ATOMIC);
+  //   return `
+  //     location_based_activation('someDevice', ${distance}, user_location);
+  //   `;
+  // };
   Blockly.JavaScript['location_based_activation'] = function(block) {
-    const distance = Blockly.JavaScript.valueToCode(block, 'DISTANCE', Blockly.JavaScript.ORDER_ATOMIC);
-    return `
-      location_based_activation('someDevice', ${distance}, user_location);
-    `;
-  };
+  const operator = block.getFieldValue('OPERATOR');
+  const threshold = block.getFieldValue('THRESHOLD');
+  const distance = Blockly.JavaScript.valueToCode(block, 'DISTANCE', Blockly.JavaScript.ORDER_ATOMIC);
+  
+  // Replace 'someDevice' with the actual device name you want to activate.
+  return `
+    if (user_location ${operator === 'LESS' ? '<' : '>'} ${threshold}) {
+      location_based_activation('someDevice', ${distance});
+    }
+  `;
+};
+
 
   function generateCode() {
       var code = Blockly.JavaScript.workspaceToCode(workspace);

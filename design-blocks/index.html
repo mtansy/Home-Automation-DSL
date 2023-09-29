@@ -77,32 +77,12 @@
         .appendField(new Blockly.FieldDropdown([["less than", "LESS"], ["greater than", "GREATER"]]), "OPERATOR")
         .appendField(new Blockly.FieldNumber(0, 0, 1000), "THRESHOLD")
         .appendField("miles from home, then");
-      this.appendStatementInput("DO")
-            .setCheck(null)
-            .appendField("Do:");
       this.setInputsInline(false); // Allow multiple blocks inside
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour(290);
     }
   };
-
-  // Blockly.Blocks['location_based_activation'] = {
-  //   init: function() {
-  //       this.appendValueInput("DISTANCE")
-  //           .setCheck("Number")
-  //           .appendField("If distance is")
-  //           .appendField(new Blockly.FieldDropdown([["less than", "LESS"], ["greater than", "GREATER"]]), "OPERATOR")
-  //           .appendField(new Blockly.FieldNumber(0, 0, 1000), "THRESHOLD")
-  //           .appendField("miles from home, then");
-  //       this.appendStatementInput("DO")
-  //           .setCheck(null)
-  //           .appendField("Do:");
-  //       this.setPreviousStatement(true, null);
-  //       this.setNextStatement(true, null);
-  //       this.setColour(290);
-  //   }
-  // };
 
   Blockly.Blocks['turn_on_essential'] = {
     init: function() {
@@ -155,19 +135,20 @@
       schedule_device_activation('someDevice', '${startTime}', '${endTime}');
     `;
   };
+
+    Blockly.JavaScript['location_based_activation'] = function(block) {
+    const operator = block.getFieldValue('OPERATOR');
+    const threshold = block.getFieldValue('THRESHOLD');
+    const distance = Blockly.JavaScript.valueToCode(block, 'DISTANCE', Blockly.JavaScript.ORDER_ATOMIC);
   
-  Blockly.JavaScript['location_based_activation'] = function(block) {
-  const operator = block.getFieldValue('OPERATOR');
-  const threshold = block.getFieldValue('THRESHOLD');
-  const distance = Blockly.JavaScript.valueToCode(block, 'DISTANCE', Blockly.JavaScript.ORDER_ATOMIC);
+    const statements = Blockly.JavaScript.statementToCode(block, 'DO');
   
-  // Replace 'someDevice' with the actual device name you want to activate.
-  return `
-    if (user_location ${operator === 'LESS' ? '<' : '>'} ${threshold}) {
-      location_based_activation('someDevice', ${distance});
-    }
-  `;
-};
+    return `
+      if (user_location ${operator === 'LESS' ? '<' : '>'} ${threshold}) {
+        ${statements}
+      }
+    `;
+  };
 
   function generateCode() {
       var code = Blockly.JavaScript.workspaceToCode(workspace);

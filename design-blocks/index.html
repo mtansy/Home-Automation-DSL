@@ -69,22 +69,39 @@
     }
   };
 
-
-  Blockly.Blocks['location_based_activation'] = {
+    Blockly.Blocks['location_based_activation'] = {
     init: function() {
-        this.appendValueInput("DISTANCE")
-            .setCheck("Number")
-            .appendField("If distance is")
-            .appendField(new Blockly.FieldDropdown([["less than", "LESS"], ["greater than", "GREATER"]]), "OPERATOR")
-            .appendField(new Blockly.FieldNumber(0, 0, 1000), "THRESHOLD")
-            .appendField("miles from home, then");
-        this.appendStatementInput("DO")
+      this.appendValueInput("DISTANCE")
+        .setCheck("Number")
+        .appendField("If distance is")
+        .appendField(new Blockly.FieldDropdown([["less than", "LESS"], ["greater than", "GREATER"]]), "OPERATOR")
+        .appendField(new Blockly.FieldNumber(0, 0, 1000), "THRESHOLD")
+        .appendField("miles from home, then");
+      this.appendStatementInput("DO")
             .setCheck(null)
             .appendField("Do:");
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(290);
+      this.setInputsInline(false); // Allow multiple blocks inside
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(290);
     }
+  };
+
+  // Blockly.Blocks['location_based_activation'] = {
+  //   init: function() {
+  //       this.appendValueInput("DISTANCE")
+  //           .setCheck("Number")
+  //           .appendField("If distance is")
+  //           .appendField(new Blockly.FieldDropdown([["less than", "LESS"], ["greater than", "GREATER"]]), "OPERATOR")
+  //           .appendField(new Blockly.FieldNumber(0, 0, 1000), "THRESHOLD")
+  //           .appendField("miles from home, then");
+  //       this.appendStatementInput("DO")
+  //           .setCheck(null)
+  //           .appendField("Do:");
+  //       this.setPreviousStatement(true, null);
+  //       this.setNextStatement(true, null);
+  //       this.setColour(290);
+  //   }
   };
 
   Blockly.Blocks['turn_on_essential'] = {

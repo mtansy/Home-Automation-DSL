@@ -114,7 +114,7 @@
 
   // Code Generators
   Blockly.JavaScript['if_electricity_cost'] = function(block) {
-    const threshold = Blockly.JavaScript.valueToCode(block, 'THRESHOLD', Blockly.JavaScript.ORDER_ATOMIC);
+   const threshold = block.getFieldValue('THRESHOLD');
     const statements = Blockly.JavaScript.statementToCode(block, 'DO');
     return `
       if (current_electricity_cost > ${threshold}) {

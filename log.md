@@ -1,34 +1,12 @@
-# udpclient
-This repository contains a UdpServer.java program and a UdpClient.java program.
-The Client prompts the user to type sentences and get responses from the server until the user types "Goodbye". It then waits for the server to send the "GOODBYE" message before closing the socket and exiting the program. 
+# Group Members
+Madi Tansy, Max Miller, Sanil Doshi
 
-Before testing the program, we made sure that it passed the checkstyle audit.
+# Work Division 
+- Submission 1: All members collaborated to come up with a project idea, and Madi took the ideas and put it together in a write up. 
+- Submission 2: Madi created the public github repo and worked on the paragraph explaining the project in further detail. Madi created the design.md file and added some design block semantics. Sanil created the README with the critial appraisal and description of the project. 
+- Submission 3: Madi updated the design2.md file with more detail about how the Blockly code will be executed. Sanil and Max gave input on what more to add, such as the recursive use case and Madi added it in. Madi also created the annotated-referenced.md file and added references, given by Max and Sanil.
+- Submission 4: Sanil created the custom Blockly blocks, which was sent to Madi and Max to look over. Madi and Max added code to have the blocks generate JavaScript code. 
+- Submission 5: Madi created the log.md file and explained how the work is divided between the group
 
-The program runs with manual input, and by running it with "java MyUdpClient < udp.input". 
-
-## Identifying Information
-
-* Name: Madi Tansy / Marissa Estramonte
-* Student ID: 2407282 / 2405291
-* Email: tansy@chapman.edu / estramonte@chapman.edu
-* Course: CPSC 353
-* Assignment: PA02 Udp Client
-
-## Source Files  
-* UdpServer.java
-* MyUdpClient.java
-
-## References
-
-* Class Notes
-
-## Known Errors
-
-* Server must be manually shut down by typing ^C
-
-## Build Insructions
-* javac *.java
-
-## Execution Instructions
-* java UdpServer in one terminal
-* java MyUdpClient in a second terminal (under a subdirectory)
+# AI Usage
+- AI has been used to help fix errors with the Blockly code (ex. ChatGPT).

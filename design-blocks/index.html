@@ -22,6 +22,7 @@
 <div class="button-row">
     <button onclick="generateCode()">Generate JavaScript</button>
     <button onclick="runCode()">Run JavaScript</button>
+    <button onclick="saveCode()">Save Code</button>
     <button onclick="saveBlocks()">Save Blocks</button>
     <button onclick="loadBlocks()">Load Blocks</button>
     <input type="file" id="loadInput" style="display: none;" onchange="loadBlocksFile(event)">
@@ -165,6 +166,15 @@
       } catch (e) {
           document.getElementById('outputDiv').innerText = 'Error: ' + e;
       }
+  }
+
+  function saveCode() {
+    var code = Blockly.JavaScript.workspaceToCode(workspace);
+    var blob = new Blob([code], { type: 'text/javascript' });
+    var a = document.createElement('a');
+    a.download = 'home_automation.js'; // Specify the desired file name with a .js extension
+    a.href = URL.createObjectURL(blob);
+    a.click();
   }
 
   function saveBlocks() {

@@ -172,7 +172,7 @@
     var code = Blockly.JavaScript.workspaceToCode(workspace);
     var blob = new Blob([code], { type: 'text/javascript' });
     var a = document.createElement('a');
-    a.download = 'home_automation.js'; // Specify the desired file name with a .js extension
+    a.download = 'home_automation.js'; // Specify the desired file name with a .js extension 
     a.href = URL.createObjectURL(blob);
     a.click();
   }

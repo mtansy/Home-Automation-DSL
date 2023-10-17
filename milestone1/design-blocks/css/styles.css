@@ -1,0 +1,17 @@
+#blocklyDiv {
+    height: 480px;
+    width: 100vw;
+  }
+  .button-row {
+    margin-top: 20px;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  button {
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
+  }

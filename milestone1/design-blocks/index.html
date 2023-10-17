@@ -3,15 +3,7 @@
 <head>
   <title>Blockly DSL for Home Automation</title>
   <script src="https://unpkg.com/blockly/blockly.min.js"></script>
-  <style>
-    #blocklyDiv {
-      height: 480px;
-      width: 100vw;
-    }
-    .button-row {
-      margin-top: 20px;
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
 
@@ -32,176 +24,24 @@
 <div id="outputDiv"></div>
 
 <script>
-  // Define Custom Blocks
-  Blockly.Blocks['if_electricity_cost'] = {
-    init: function() {
-        this.appendDummyInput()
-            .appendField("If electricity cost exceeds")
-            .appendField(new Blockly.FieldNumber(0, 0, 1000), "THRESHOLD")
-        this.appendStatementInput("DO")
-            .setCheck(null)
-            .appendField("Do:");
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(290);
-    }
-  };
-
-  Blockly.Blocks['turn_off_non_essential'] = {
-    init: function() {
-      this.appendDummyInput()
-          .appendField("Turn off non-essential devices");
-      this.setPreviousStatement(true, null);
-      this.setNextStatement(true, null);
-      this.setColour(160);
-    }
-  };
-
-  Blockly.Blocks['schedule_device_activation'] = {
-    init: function() {
-        this.appendDummyInput()
-            .appendField("Schedule device activation at")
-            .appendField(new Blockly.FieldTextInput("00:00"), "START_TIME") // Changed to TextInput
-            .appendField("to")
-            .appendField(new Blockly.FieldTextInput("00:00"), "END_TIME");  // Changed to TextInput
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(230);
-    }
-  };
-
-    Blockly.Blocks['location_based_activation'] = {
-    init: function() {
-      this.appendValueInput("DISTANCE")
-        .setCheck("Number")
-        .appendField("If distance is")
-        .appendField(new Blockly.FieldDropdown([["less than", "LESS"], ["greater than", "GREATER"]]), "OPERATOR")
-        .appendField(new Blockly.FieldNumber(0, 0, 1000), "THRESHOLD")
-        .appendField("miles from home, then");
-      this.appendStatementInput("DO")
-            .setCheck(null)
-            .appendField("Do:");
-      this.setPreviousStatement(true, null);
-      this.setNextStatement(true, null);
-      this.setColour(290);
-    }
-  };
-
-  Blockly.Blocks['turn_on_essential'] = {
-    init: function() {
-      this.appendDummyInput()
-          .appendField("Turn on essential devices");
-      this.setPreviousStatement(true, null);
-      this.setNextStatement(true, null);
-      this.setColour(160);
-    }
-  };
-
-  // Initialize Blockly Workspace
   const toolbox = `
     <xml>
       <category name="Home Automation" colour="120">
         <block type="if_electricity_cost"></block>
-        <block type="turn_off_non_essential"></block>
-        <block type="schedule_device_activation"></block>
         <block type="location_based_activation"></block>
+        <block type="schedule_device_activation"></block>
+        <block type="turn_off_non_essential"></block>
         <block type="turn_on_essential"></block>
       </category>
     </xml>
   `;
-
   const workspace = Blockly.inject('blocklyDiv', {toolbox: toolbox});
 
-  // Code Generators
-  Blockly.JavaScript['if_electricity_cost'] = function(block) {
-   const threshold = block.getFieldValue('THRESHOLD');
-    const statements = Blockly.JavaScript.statementToCode(block, 'DO');
-    return `
-      if (current_electricity_cost > ${threshold}) {
-        ${statements}
-      }
-    `;
-  };
-  
-  Blockly.JavaScript['turn_on_essential'] = function(block) {
-    return 'turn_on_essential();\n';
-  };
-
-  Blockly.JavaScript['turn_off_non_essential'] = function(block) {
-    return 'turn_off_non_essential_devices();\n';
-  };
-
-  Blockly.JavaScript['schedule_device_activation'] = function(block) {
-    const startTime = block.getFieldValue('START_TIME');
-    const endTime = block.getFieldValue('END_TIME');
-    return `
-      schedule_device_activation('someDevice', '${startTime}', '${endTime}');
-    `;
-  };
-
-    Blockly.JavaScript['location_based_activation'] = function(block) {
-    const operator = block.getFieldValue('OPERATOR');
-    const threshold = block.getFieldValue('THRESHOLD');
-    const distance = Blockly.JavaScript.valueToCode(block, 'DISTANCE', Blockly.JavaScript.ORDER_ATOMIC);
-  
-    const statements = Blockly.JavaScript.statementToCode(block, 'DO');
-  
-    return `
-      if (user_location ${operator === 'LESS' ? '<' : '>'} ${threshold}) {
-        ${statements}
-      }
-    `;
-  };
-
-  function generateCode() {
-      var code = Blockly.JavaScript.workspaceToCode(workspace);
-      document.getElementById('codeDiv').innerText = code;
-  }
-
-  function runCode() {
-      var code = Blockly.JavaScript.workspaceToCode(workspace);
-      try {
-          var output = eval(code);
-          document.getElementById('outputDiv').innerText = output;
-      } catch (e) {
-          document.getElementById('outputDiv').innerText = 'Error: ' + e;
-      }
-  }
-
-  function saveCode() {
-    var code = Blockly.JavaScript.workspaceToCode(workspace);
-    var blob = new Blob([code], { type: 'text/javascript' });
-    var a = document.createElement('a');
-    a.download = 'home_automation.js'; // Specify the desired file name with a .js extension
-    a.href = URL.createObjectURL(blob);
-    a.click();
-  }
-
-  function saveBlocks() {
-      var xml = Blockly.Xml.workspaceToDom(workspace);
-      var xmlText = Blockly.Xml.domToPrettyText(xml);
-      var blob = new Blob([xmlText], {type: 'text/xml'});
-      var a = document.createElement('a');
-      a.download = 'blocks.xml';
-      a.href = URL.createObjectURL(blob);
-      a.click();
-  }
-
-  function loadBlocks() {
-      document.getElementById('loadInput').click();
-  }
-
-  function loadBlocksFile(event) {
-      var file = event.target.files[0];
-      var reader = new FileReader();
-      reader.onload = function(e) {
-          var xml = Blockly.utils.xml.textToDom(e.target.result);
-          Blockly.Xml.appendDomToWorkspace(xml, workspace);
-      };
-      reader.readAsText(file);
-  }
-
 </script>
+<script src="js/custom_blocks.js"></script>
+<script src="js/code_generator.js"></script>
+<script src="js/simulated_backend.js"></script>
+<script src="js/block_handler.js"></script>
 
 </body>
 </html>

@@ -1,6 +1,6 @@
  // Simulate Backend Data
- var current_electricity_cost = Math.random() * 100;  // Simulate a random electricity cost
- var user_location = Math.random() * 10;  // Simulate a random user location distance in miles
+ var current_electricity_cost = Math.random() * 100;  // random electricity cost
+ var user_location = Math.random() * 10;  // random user location (distance in miles)
 
  // Simulated Backend Functions
  function turn_on_essential() {

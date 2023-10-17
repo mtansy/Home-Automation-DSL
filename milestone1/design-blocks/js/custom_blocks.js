@@ -1,3 +1,5 @@
+// Creating blocks
+
 Blockly.Blocks['if_electricity_cost'] = {
     init: function() {
         this.appendDummyInput()

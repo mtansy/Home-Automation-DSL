@@ -11,3 +11,6 @@
 
 - **Blockly URL**
 https://mtansy.github.io/Home-Automation-DSL/milestone1/design-blocks/
+
+- **Building the Project**
+- To build the project, for now the backend openHAB is still a work in progress, so all that is needed is running the Blockly code on the web. 

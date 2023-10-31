@@ -63,3 +63,54 @@ Blockly.Blocks['if_electricity_cost'] = {
       this.setColour(160);
     }
   };
+
+Blockly.Blocks['adjust_thermostat'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Set thermostat")
+        .appendField(new Blockly.FieldNumber(72, 50, 90), "TEMPERATURE")
+        .appendField("°F");
+    this.appendDummyInput()
+        .appendField("for thermostat")
+        .appendField(new Blockly.FieldTextInput("Living Room"), "THERMOSTAT");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+  }
+};
+
+Blockly.Blocks['control_lights'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldDropdown([["Turn On", "ON"], ["Turn Off", "OFF"]]), "ACTION")
+        .appendField("lights in")
+        .appendField(new Blockly.FieldTextInput("Living Room"), "ROOM");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+  }
+};
+
+Blockly.Blocks['lock_unlock_door'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldDropdown([["Lock", "LOCK"], ["Unlock", "UNLOCK"]]), "ACTION")
+        .appendField("the")
+        .appendField(new Blockly.FieldTextInput("Front Door"), "DOOR");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+  }
+};
+
+Blockly.Blocks['security_system_control'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldDropdown([["Arm", "ARM"], ["Disarm", "DISARM"]]), "ACTION")
+        .appendField("the security system with code")
+        .appendField(new Blockly.FieldTextInput("1234"), "CODE");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+  }
+};

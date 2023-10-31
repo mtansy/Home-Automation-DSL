@@ -3,7 +3,7 @@
 Blockly.Blocks['if_electricity_cost'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField("If electricity cost exceeds")
+            .appendField("If electricity cost is over")
             .appendField(new Blockly.FieldNumber(0, 0, 1000), "THRESHOLD")
         this.appendStatementInput("DO")
             .setCheck(null)

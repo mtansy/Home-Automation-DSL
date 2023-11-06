@@ -79,6 +79,20 @@ Blockly.Blocks['adjust_thermostat'] = {
   }
 };
 
+// New block: allows turning a smart plug on or off
+Blockly.Blocks['smart_plug_control'] = {
+  init: function() {
+    this.appendDummyInput()
+      .appendField("Turn")
+      .appendField(new Blockly.FieldDropdown([["On", "ON"], ["Off", "OFF"]]), "ACTION")
+      .appendField("smart plug")
+      .appendField(new Blockly.FieldTextInput("Living Room Lamp"), "NAME");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+  }
+};
+
 Blockly.Blocks['control_lights'] = {
   init: function() {
     this.appendDummyInput()

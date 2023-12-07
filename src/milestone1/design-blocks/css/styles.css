@@ -1,30 +1,149 @@
+/* Container holding Blockly and Output */
 #blocklyDiv {
-    height: 480px;
-    width: 100vw;
-  }
-  .button-row {
-    margin-top: 20px;
-  }
+  max-width: 100%;
+  height: 480px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  margin-top: 20px;
+}
 
-  h1 {
+.button-row {
+  margin-top: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 40pt;
+}
+
+h1, h2, h3, p {
     text-align: center;
-  }
+    font-family: 'Quicksand', sans-serif;
+}
 
-  button {
+button {
     padding: 10px;
     border-radius: 10px;
     font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
-  }
+}
+#outputDiv {
+  height: 300px;
+}
 
-  .output-container {
-    display: flex;
-    justify-content: space-between;
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.button-row button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.button-row button:hover {
+  background-color: #45a049;
+}
+
+.output-container {
+  margin-top: 20px;
+}
+
+
+/* Toolbox Styling */
+.blocklyTreeRow {
+  color: #000000;
+  font-size: 14px; /* Adjust font size for better readability */
+}
+
+
+
+.blocklySvg .blocklyBlockBackground {
+  fill-opacity: 0.6; /* Slightly transparent blocks */
+  stroke-width: 1px;
+  stroke: rgba(0,0,0,0.2); /* Soften block edges */
+}
+
+.blocklySvg .blocklySelected>.blocklyBlockBackground {
+  fill-opacity: 1; /* Solid color on selected block */
+  stroke: #ff0707; /* Highlight color for selected block */
+}
+
+/* Style for the dropdown container */
+.dropdown {
+  position: fixed; /* or absolute */
+  top: 0;
+  right: 20px;
+  padding: 10px;
+  z-index: 1000;
+}
+
+/* Style for the dropdown button */
+.dropbtn {
+  background-color: #4CAF50; /* Choose your color */
+  color: #ffffff;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f4f4f4;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content button {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content button:hover {
+  background-color: rgb(213, 253, 204);
+  cursor: pointer;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
 }
 
 .output-box {
-    flex: 1;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    min-height: 100px;
+  margin: 10px auto; /* Horizontal centering */
+  border: 1px solid #ccc;
+  min-height: 100px;
+  width: 95%;
+  border-radius: 10px; /* Curved corners */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Box shadow for depth */
+  font-family: 'Arial', sans-serif; /* Choose a pleasant font */
+  background-color: #ffffff; /* Optional: a light background */
+  padding: 10px; /* Padding for inner spacing */
+  text-align: center; /* Centering the text */
+  display: block; /* Ensure it's treated as a block element */
 }
+

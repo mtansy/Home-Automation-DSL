@@ -1,10 +1,9 @@
-function generateCode() {
-    var code = Blockly.JavaScript.workspaceToCode(workspace);
-    document.getElementById('codeDiv').innerText = code;
-}
-
 function runCode() {
+
   var code = Blockly.JavaScript.workspaceToCode(workspace);
+
+  document.getElementById('codeDiv').innerText = code;
+
   var outputDiv = document.getElementById('outputDiv');
   try {
       console.oldLog = console.log;
@@ -50,3 +49,15 @@ function loadBlocksFile(event) {
     };
     reader.readAsText(file);
 }
+
+document.getElementById('show-logs').addEventListener('click', function() {
+    const logWindow = window.open('', '_blank');
+    if (logWindow) {
+      // Assuming actionLog is the array containing your log data
+      actionLog.forEach(log => {
+        logWindow.document.write(`<p>${log}</p>`);
+      });
+    } else {
+      alert('Unable to open log window. Please check your popup settings.');
+    }
+});

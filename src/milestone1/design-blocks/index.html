@@ -4,27 +4,42 @@
   <title>Blockly DSL for Home Automation</title>
   <script src="https://unpkg.com/blockly/blockly.min.js"></script>
   <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<h1>Home Automation DSL using Blockly</h1>
+<h1>Home Automation DSL</h1>
+<h3>Automate your home using Blockly</h3>
+
+<div class="dropdown">
+  <button class="dropbtn">Options</button>
+  <div class="dropdown-content">
+    <button id="save-code" onclick="saveCode()">Save Code</button>
+    <button id="save-blocks" onclick="saveBlocks()">Save Blocks</button>
+    <button id="load-blocks" onclick="loadBlocks()">Load Blocks</button>
+  </div>
+</div>
+
 
 <div id="blocklyDiv"></div>
 
 <div class="button-row">
-    <button onclick="generateCode()">Generate JavaScript</button>
-    <button onclick="runCode()">Run JavaScript</button>
-    <button onclick="saveCode()">Save Code</button>
-    <button onclick="saveBlocks()">Save Blocks</button>
-    <button onclick="loadBlocks()">Load Blocks</button>
+    <button onclick="runCode()">Run</button>
+    <button id="show-logs" onclick="showLogs()">Show Logs</button>
     <input type="file" id="loadInput" style="display: none;" onchange="loadBlocksFile(event)">
 </div>
 
-<div class="output-container">
-  <div id="codeDiv" class="output-box"></div>
-  <div id="outputDiv" class="output-box"></div>
-</div>
+<h2>Output</h2>
+<div id="outputDiv" class="output-box"></div>
 
+<div id="code-output">
+  <h2>Code Generator</h2>
+  <p>Here is a sample of what functions may be called:</p>
+  <div id="codeDiv" class="output-box"></div>
+</div>
 
 <script>
   const toolbox = `
@@ -32,14 +47,35 @@
       <category name="Home Automation" colour="120">
         <block type="if_electricity_cost"></block>
         <block type="location_based_activation"></block>
-        <block type="schedule_device_activation"></block>
+        <block type="security_system_control"></block>
+      </category>
+      <category name="Devices" colour="210">
+        <block type="amazon_alexa"></block>
+        <block type="philips_lightbulb"></block>
+        <block type="curtains"></block>
+        <block type="smart_plugs"></block>
+      </category>
+      <category name="Actions" colour="310">
         <block type="turn_off_non_essential"></block>
         <block type="turn_on_essential"></block>
+        <block type="curtains_control"></block>
+        <block type="set_temperature"></block>
+        <block type="garage_control"></block>
+        <block type="schedule_device_activation"></block>
         <block type="smart_plug_control"></block>
+        <block type="control_lights"></block>
+        <block type="lock_unlock_door"></block>
       </category>
     </xml>
   `;
   const workspace = Blockly.inject('blocklyDiv', {toolbox: toolbox});
+
+
+  function showLogs() {
+    var outputDiv = document.getElementById('outputDiv');
+    outputDiv.innerHTML = actionLog.join('<br>');
+  }
+
 
 </script>
 <script src="js/custom_blocks.js"></script>

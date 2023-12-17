@@ -2,4 +2,4 @@ var xmlString = '<xml xmlns="https://developers.google.com/blockly/xml"><block t
 var parser = new DOMParser();
 var xmlDoc = parser.parseFromString(xmlString, "text/xml");
 var serializer = new XMLSerializer();
-window.defaultBlocks = serializer.serializeToString(xmlDoc);
+export const defaultBlocks = new XMLSerializer().serializeToString(xmlDoc);

@@ -40,7 +40,7 @@
   <div id="codeDiv" class="output-box"></div>
 </div>
 
-<script>
+<script type="module">
   const toolbox = `
     <xml>
       <category name="Home Automation" colour="120">
@@ -69,19 +69,34 @@
   `;
   const workspace = Blockly.inject('blocklyDiv', {toolbox: toolbox});
 
+  async function loadDefaultBlocks() {
+    console.log("Loading default blocks...");
+    const { defaultBlocks } = await import('./js/defaultBlocks.js');
+    console.log("Default blocks string:", defaultBlocks);
+    
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(defaultBlocks, "text/xml");
+    console.log("Parsed XML document:", xmlDoc);
+
+    Blockly.Xml.domToWorkspace(xmlDoc, workspace);
+    console.log("Blocks loaded into workspace.");
+  }
+
+  loadDefaultBlocks();
 
   function showLogs() {
     var outputDiv = document.getElementById('outputDiv');
     outputDiv.innerHTML = actionLog.join('<br>');
   }
 
-
 </script>
-<script src="js/defaultBlocks.js"></script> 
-<script src="js/custom_blocks.js"></script>
-<script src="js/code_generator.js"></script>
-<script src="js/simulated_backend.js"></script>
-<script src="js/block_handler.js"></script>
+
+<script type="module" src="js/defaultBlocks.js"></script>
+<script type="module" src="js/custom_blocks.js"></script>
+<script type="module" src="js/code_generator.js"></script>
+<script type="module" src="js/simulated_backend.js"></script>
+<script type="module" src="js/block_handler.js"></script>
+
 
 </body>
 </html>

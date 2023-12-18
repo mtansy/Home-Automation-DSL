@@ -12,5 +12,15 @@
 - **Blockly URL**
 https://mtansy.github.io/Home-Automation-DSL/src/milestone1/design-blocks/
 
+- **Videos**
+- In the case that the videos can't be loaded under src/milestone1/videos, here is a link to them on Google Drive:
+https://drive.google.com/drive/folders/1RwFrF_bWCPkN5afpI5Gd1BuM6ZS1AMSy?usp=drive_link
+
 - **Building the Project**
-- To build the project, for now the backend openHAB is still a work in progress, so all that is needed is running the Blockly code on the web. 
+- To build the project, for now the backend openHAB is still a work in progress, so all that is needed is running the Blockly code on the web.
+
+- **Future Work**
+- In the future, we plan on furthering our attempts to connect our Blockly code with openHAB or another open API. If we can't, we would like to look into making our own API that would be easier to connect our code.
+
+- **Contributions**
+- Contributions can be seen 

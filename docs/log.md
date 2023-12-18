@@ -8,5 +8,7 @@ Madi Tansy, Max Miller, Sanil Doshi
 - Submission 4: Sanil created the custom Blockly blocks, which was sent to Madi and Max to look over. Madi and Max added code to have the blocks generate JavaScript code. 
 - Submission 5: Madi created the log.md file and explained how the work is divided between the group, along with adding functionality to Blockly to save the code. Sanil helped with errors and pushing to GitHub.
 
+- Final Bit: Madi and Max worked on continuing to connect Blockly to openHAB, while Sanil worked on adding more block functionalities so that we would at least have some Blockly code to demonstrate for our final if the openHAB connectoin failed, which it did. Sanil and Madi worked on making the defualt blocks load into Blockly automatically when it opens, but despite having the defaultBlocks.js file and the script running in index.html, it still does not show up, and we are not sure why. Madi then made the videos and did everything else related to the final submission.
+
 # AI Usage
 - AI has been used to help fix errors with the Blockly code (ex. ChatGPT).

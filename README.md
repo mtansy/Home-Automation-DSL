@@ -23,4 +23,4 @@ https://drive.google.com/drive/folders/1RwFrF_bWCPkN5afpI5Gd1BuM6ZS1AMSy?usp=dri
 - In the future, we plan on furthering our attempts to connect our Blockly code with openHAB or another open API. If we can't, we would like to look into making our own API that would be easier to connect our code.
 
 - **Contributions**
-- Contributions can be seen 
+- Contributions can be seen in docs/log.md
